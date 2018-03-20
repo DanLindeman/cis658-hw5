@@ -1,24 +1,16 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Lname:</strong>
-  <%= @user.lname %>
-</p>
-
-<p>
-  <strong>Fname:</strong>
-  <%= @user.fname %>
-</p>
-
-<p>
-  <strong>Email:</strong>
-  <%= @user.email %>
-</p>
-
-<p>
-  <strong>Thumbnail:</strong>
-  <%= @user.thumbnail %>
-</p>
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<ul class="list-group">
+  <li class="list-group-item">First Name: 
+    <%=@user.fname%>
+  </li>
+  <li class="list-group-item">Last Name:
+    <%=@user.lname%>
+  </li>
+  <li class="list-group-item">Emai:
+    <%=@user.email%>
+  </li>
+  <li class="list-group-item">Thumbnail:
+    <%=@user.thumbnail%>
+  </li>
+</ul>

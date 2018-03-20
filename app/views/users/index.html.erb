@@ -1,33 +1,40 @@
-<p id="notice"><%= notice %></p>
+
+<% if !notice.blank? %>
+    <p id="notice" class="alert alert-success"><%= notice %></p>
+<% end %>
 
 <h1>Users</h1>
 
-<table>
+<table class="table table-hover">
   <thead>
     <tr>
-      <th>Lname</th>
-      <th>Fname</th>
-      <th>Email</th>
-      <th>Thumbnail</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @users.each do |user| %>
-      <tr>
-        <td><%= user.lname %></td>
-        <td><%= user.fname %></td>
-        <td><%= user.email %></td>
-        <td><%= user.thumbnail %></td>
-        <td><%= link_to 'Show', user %></td>
-        <td><%= link_to 'Edit', edit_user_path(user) %></td>
-        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <th class="col-md-3">First Name</th>
+      <th class="col-md-3">Last Name</th>
+      <th class="col-md-3">Email</th>
+      <th class="col-md-3">Actions</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
 
-<br>
-
-<%= link_to 'New User', new_user_path %>
+    <tbody>
+      <% @users.each do |user| %>
+      <tr>
+        <td class="col-md-3"><%= user.fname %></td>
+        <td class="col-md-3"><%= user.lname %></td>
+        <td class="col-md-3"><%= user.email %></td>
+        <td class="col-md-3">
+          <%= link_to user, class: "btn btn-default btn-sm" do %>
+          <i class="glyphicon glyphicon-eye-open"></i> Show
+          <% end %>
+          <%= link_to edit_user_path(user), class: "btn btn-default btn-sm" do %>
+          <i class="glyphicon glyphicon-pencil"></i> Edit
+          <% end %>
+          <%= link_to user, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-sm" do %>
+          <i class="glyphicon glyphicon-trash"></i> Delete
+          <% end %>
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <br/>
+  <%= link_to 'New User', new_user_path, :class => "btn btn-primary" %>
